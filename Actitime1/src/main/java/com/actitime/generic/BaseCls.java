@@ -14,18 +14,18 @@ import org.testng.annotations.BeforeTest;
 import com.actitime.pomrepository.EnterTimeTrack;
 import com.actitime.pomrepository.LoginPage;
 
+import io.github.bonigarcia.wdm.WebDriverManager;
+
 public class BaseCls {
 	
 	public static WebDriver staticDriver;
 
-	static
-	{
-		System.setProperty("webdriver.chrome.driver", "./src/main/resources/driver/chromedriver.exe");
-	}
+	
 	public  static WebDriver driver;
 	@BeforeTest
 	public void openBrowser()
 	{
+		WebDriverManager.chromedriver().setup();
 		Reporter.log("open browser", true);
 		driver=new ChromeDriver();
 		driver.manage().window().maximize();
